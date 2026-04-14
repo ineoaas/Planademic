@@ -1,0 +1,104 @@
+@page
+@model Planademic.Web.Pages.Courses.IndexModel
+@{
+    ViewData["Title"] = "My Courses";
+    ViewData["ActivePage"] = "Courses";
+}
+
+@section TopbarActions {
+    <button class="btn btn-primary btn-sm" id="joinCourseBtn">+ Join course</button>
+}
+
+<div class="modal-overlay" id="joinModal">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title">Join a course</span>
+            <button class="modal-close" id="closeModal">✕</button>
+        </div>
+        <div class="modal-body">
+            <p class="modal-hint">Ask your teacher for the course join code.</p>
+            <div class="field-group">
+                <label class="field-label" for="joinCode">Join code</label>
+                <input class="field-input" id="joinCode" type="text" placeholder="e.g. SD-4829" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost btn-sm" id="cancelJoin">Cancel</button>
+            <button class="btn btn-primary btn-sm" disabled>Join course</button>
+        </div>
+    </div>
+</div>
+
+<div class="course-grid">
+
+    <div class="course-card">
+        <div class="course-color-bar" style="background: #818cf8;"></div>
+        <div class="course-body">
+            <div class="course-name">Software Design</div>
+            <div class="course-teacher">Dr. van den Berg</div>
+            <div class="course-progress-row">
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 25%; background: #818cf8;"></div>
+                </div>
+                <span class="progress-label">1/4</span>
+            </div>
+            <div class="course-stats">
+                <span><strong>4</strong> tasks</span>
+                <span><strong>3</strong> pending</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="course-card">
+        <div class="course-color-bar" style="background: #4caf7d;"></div>
+        <div class="course-body">
+            <div class="course-name">Professional Skills</div>
+            <div class="course-teacher">Ms. Janssen</div>
+            <div class="course-progress-row">
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 100%; background: #4caf7d;"></div>
+                </div>
+                <span class="progress-label">2/2</span>
+            </div>
+            <div class="course-stats">
+                <span><strong>2</strong> tasks</span>
+                <span><strong>0</strong> pending</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="course-card">
+        <div class="course-color-bar" style="background: #f5a623;"></div>
+        <div class="course-body">
+            <div class="course-name">Databases</div>
+            <div class="course-teacher">Mr. Pietersen</div>
+            <div class="course-progress-row">
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 0%; background: #f5a623;"></div>
+                </div>
+                <span class="progress-label">0/3</span>
+            </div>
+            <div class="course-stats">
+                <span><strong>3</strong> tasks</span>
+                <span><strong>3</strong> pending</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="course-card course-card-add" id="joinCourseBtn2">
+        <span class="add-plus">＋</span>
+        <span class="add-label">Join a course</span>
+    </div>
+
+</div>
+
+@section Scripts {
+<script>
+    const overlay   = document.getElementById('joinModal');
+    const openBtns  = [document.getElementById('joinCourseBtn'), document.getElementById('joinCourseBtn2')];
+    const closeBtns = [document.getElementById('closeModal'), document.getElementById('cancelJoin')];
+    openBtns.forEach(b => b?.addEventListener('click', () => overlay.classList.add('open')));
+    closeBtns.forEach(b => b?.addEventListener('click', () => overlay.classList.remove('open')));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+</script>
+}

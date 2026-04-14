@@ -1,5 +1,0 @@
-<Solution>
-dotnet sln add Planademic.Web/Planademic.Web.csproj
-dotnet sln add Planademic.BLL/Planademic.BLL.csproj
-dotnet sln add Planademic.DAL/Planademic.DAL.csprojdotnet 
-</Solution>
