@@ -1,0 +1,103 @@
+@page
+@model Planademic.Web.Pages.Availability.IndexModel
+@{
+    ViewData["Title"] = "My Availability";
+    ViewData["ActivePage"] = "Availability";
+}
+
+@section TopbarActions {
+    <button class="btn btn-primary btn-sm" id="saveAvail" disabled>Save changes</button>
+}
+
+<p class="page-hint">Click slots to toggle your free time. The scheduling engine uses this to build your study roadmap.</p>
+
+<div class="card">
+    <div class="card-body">
+        <div class="avail-grid">
+            <div class="ag-cell ag-header ag-corner"></div>
+            <div class="ag-cell ag-header">Mon</div>
+            <div class="ag-cell ag-header">Tue</div>
+            <div class="ag-cell ag-header">Wed</div>
+            <div class="ag-cell ag-header">Thu</div>
+            <div class="ag-cell ag-header">Fri</div>
+            <div class="ag-cell ag-header">Sat</div>
+            <div class="ag-cell ag-header">Sun</div>
+
+            <div class="ag-cell ag-time">08:00 – 10:00</div>
+            <div class="ag-cell ag-slot active" data-day="0" data-slot="0"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="1" data-slot="0"></div>
+            <div class="ag-cell ag-slot active" data-day="2" data-slot="0"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="3" data-slot="0"></div>
+            <div class="ag-cell ag-slot"        data-day="4" data-slot="0"></div>
+            <div class="ag-cell ag-slot"        data-day="5" data-slot="0"></div>
+            <div class="ag-cell ag-slot"        data-day="6" data-slot="0"></div>
+
+            <div class="ag-cell ag-time">10:00 – 12:00</div>
+            <div class="ag-cell ag-slot active" data-day="0" data-slot="1"><span>Free</span></div>
+            <div class="ag-cell ag-slot active" data-day="1" data-slot="1"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="2" data-slot="1"></div>
+            <div class="ag-cell ag-slot active" data-day="3" data-slot="1"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="4" data-slot="1"></div>
+            <div class="ag-cell ag-slot"        data-day="5" data-slot="1"></div>
+            <div class="ag-cell ag-slot"        data-day="6" data-slot="1"></div>
+
+            <div class="ag-cell ag-time">12:00 – 14:00</div>
+            <div class="ag-cell ag-slot" data-day="0" data-slot="2"></div>
+            <div class="ag-cell ag-slot" data-day="1" data-slot="2"></div>
+            <div class="ag-cell ag-slot" data-day="2" data-slot="2"></div>
+            <div class="ag-cell ag-slot" data-day="3" data-slot="2"></div>
+            <div class="ag-cell ag-slot" data-day="4" data-slot="2"></div>
+            <div class="ag-cell ag-slot" data-day="5" data-slot="2"></div>
+            <div class="ag-cell ag-slot" data-day="6" data-slot="2"></div>
+
+            <div class="ag-cell ag-time">14:00 – 16:00</div>
+            <div class="ag-cell ag-slot active" data-day="0" data-slot="3"><span>Free</span></div>
+            <div class="ag-cell ag-slot active" data-day="1" data-slot="3"><span>Free</span></div>
+            <div class="ag-cell ag-slot active" data-day="2" data-slot="3"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="3" data-slot="3"></div>
+            <div class="ag-cell ag-slot active" data-day="4" data-slot="3"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="5" data-slot="3"></div>
+            <div class="ag-cell ag-slot"        data-day="6" data-slot="3"></div>
+
+            <div class="ag-cell ag-time">16:00 – 18:00</div>
+            <div class="ag-cell ag-slot"        data-day="0" data-slot="4"></div>
+            <div class="ag-cell ag-slot active" data-day="1" data-slot="4"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="2" data-slot="4"></div>
+            <div class="ag-cell ag-slot"        data-day="3" data-slot="4"></div>
+            <div class="ag-cell ag-slot active" data-day="4" data-slot="4"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="5" data-slot="4"></div>
+            <div class="ag-cell ag-slot"        data-day="6" data-slot="4"></div>
+
+            <div class="ag-cell ag-time">18:00 – 20:00</div>
+            <div class="ag-cell ag-slot"        data-day="0" data-slot="5"></div>
+            <div class="ag-cell ag-slot"        data-day="1" data-slot="5"></div>
+            <div class="ag-cell ag-slot"        data-day="2" data-slot="5"></div>
+            <div class="ag-cell ag-slot active" data-day="3" data-slot="5"><span>Free</span></div>
+            <div class="ag-cell ag-slot"        data-day="4" data-slot="5"></div>
+            <div class="ag-cell ag-slot"        data-day="5" data-slot="5"></div>
+            <div class="ag-cell ag-slot"        data-day="6" data-slot="5"></div>
+        </div>
+
+        <div class="avail-legend">
+            <span class="avail-legend-item">
+                <span class="avail-swatch swatch-free"></span> Free
+            </span>
+            <span class="avail-legend-item">
+                <span class="avail-swatch swatch-busy"></span> Busy
+            </span>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    const saveBtn = document.getElementById('saveAvail');
+    document.querySelectorAll('.ag-slot').forEach(cell => {
+        cell.addEventListener('click', () => {
+            cell.classList.toggle('active');
+            cell.innerHTML = cell.classList.contains('active') ? '<span>Free</span>' : '';
+            if (saveBtn) saveBtn.disabled = false;
+        });
+    });
+</script>
+}

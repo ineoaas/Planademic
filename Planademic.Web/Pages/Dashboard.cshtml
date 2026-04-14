@@ -1,0 +1,118 @@
+@page
+@model Planademic.Web.Pages.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["ActivePage"] = "Dashboard";
+}
+
+@section TopbarActions {
+    <a asp-page="/Schedule/Index" class="btn btn-primary btn-sm">Generate schedule</a>
+}
+
+<div class="metrics-row">
+    <div class="metric-card">
+        <span class="metric-label">Pending tasks</span>
+        <span class="metric-value">8</span>
+        <span class="metric-sub">across 3 courses</span>
+    </div>
+    <div class="metric-card metric-card-warn">
+        <span class="metric-label">Due this week</span>
+        <span class="metric-value">3</span>
+        <span class="metric-sub">2 high complexity</span>
+    </div>
+    <div class="metric-card">
+        <span class="metric-label">Free slots</span>
+        <span class="metric-value">12h</span>
+        <span class="metric-sub">this week</span>
+    </div>
+    <div class="metric-card metric-card-ok">
+        <span class="metric-label">Completed</span>
+        <span class="metric-value">5</span>
+        <span class="metric-sub">this week</span>
+    </div>
+</div>
+
+<div class="dash-grid">
+
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">Upcoming tasks</span>
+        </div>
+        <div class="card-body p0">
+            <div class="task-row">
+                <div class="cbadge cbadge-high">9</div>
+                <div class="task-info">
+                    <div class="task-name">Research essay draft</div>
+                    <div class="task-meta">Software Design</div>
+                </div>
+                <span class="due-pill due-urgent">2 days</span>
+            </div>
+            <div class="task-row">
+                <div class="cbadge cbadge-high">8</div>
+                <div class="task-info">
+                    <div class="task-name">UML class diagram</div>
+                    <div class="task-meta">Software Design</div>
+                </div>
+                <span class="due-pill due-urgent">4 days</span>
+            </div>
+            <div class="task-row">
+                <div class="cbadge cbadge-med">5</div>
+                <div class="task-info">
+                    <div class="task-name">Weekly reflection</div>
+                    <div class="task-meta">Professional Skills</div>
+                </div>
+                <span class="due-pill">7 days</span>
+            </div>
+            <div class="task-row">
+                <div class="cbadge cbadge-med">4</div>
+                <div class="task-info">
+                    <div class="task-name">Database schema review</div>
+                    <div class="task-meta">Databases</div>
+                </div>
+                <span class="due-pill">9 days</span>
+            </div>
+            <div class="task-row task-row-last">
+                <div class="cbadge cbadge-low">2</div>
+                <div class="task-info">
+                    <div class="task-name">Quiz preparation</div>
+                    <div class="task-meta">Databases</div>
+                </div>
+                <span class="due-pill">12 days</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">Today's study slots</span>
+        </div>
+        <div class="card-body p0">
+            <div class="slot-row">
+                <span class="slot-time">09:00 – 10:30</span>
+                <div class="slot-bar slot-indigo">Research essay draft</div>
+            </div>
+            <div class="slot-row">
+                <span class="slot-time">10:30 – 11:00</span>
+                <div class="slot-bar slot-empty">Break</div>
+            </div>
+            <div class="slot-row">
+                <span class="slot-time">13:00 – 14:30</span>
+                <div class="slot-bar slot-indigo">Research essay draft</div>
+            </div>
+            <div class="slot-row">
+                <span class="slot-time">14:30 – 16:00</span>
+                <div class="slot-bar slot-teal">UML class diagram</div>
+            </div>
+            <div class="slot-row slot-row-last">
+                <span class="slot-time">16:00 – 17:00</span>
+                <div class="slot-bar slot-amber">Weekly reflection</div>
+            </div>
+            <div class="slot-legend">
+                <span class="legend-chip chip-indigo">High priority</span>
+                <span class="legend-chip chip-teal">Medium</span>
+                <span class="legend-chip chip-amber">Lower</span>
+            </div>
+        </div>
+    </div>
+
+</div>
